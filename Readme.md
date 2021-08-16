@@ -1,7 +1,7 @@
 # Distance between address
 
-Created by: **Juander Contreras**
-Gmail: **Juandercn@gmail.com**
+Created by: **Juander Contreras**.
+Gmail: **Juandercn@gmail.com**.
 
 This application use the Harversine method(**[link](https://en.wikipedia.org/wiki/Haversine_formula)**) to calculate
 the distance between two address, using the latitude and 
