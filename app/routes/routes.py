@@ -3,6 +3,11 @@ import math #module of math
 import re #module to get matches
 import logging #module to save the historial
 api_bp = Blueprint("api_bp",__name__) 
+from geopy.geocoders import Nominatim
+
+geolocator = Nominatim(user_agent="Harversine")
+
+
 
 #Function to create, format and write the historial
 def Writer(args):
@@ -18,8 +23,11 @@ def Writer(args):
 #This is a decorator to validate the input data
 def validate(f):
     def wrapper():
-        args = request.args.get("coordenates") #Receive the argument by url
-        coordenate = args.split(", ") #split a list with ',' by separator to take the latitude and longitude
+        args = request.args.get("address") #Receive the argument by url
+        location = geolocator.geocode(args) # Take the args of the address
+        lat_long = f"{location.latitude},{location.longitude}" #Return the latitude and longitude
+        coordenate = re.split(",",lat_long) #split a list with ',' by separator to take the latitude and longitude
+       
         if len(coordenate[0]) < 9: #Evaluate the length of the latitude and return error if less than 9
             return jsonify({"Error":"Invalid latitude"}),400
         else: #else return the haversine function passing the main coordinate and the user coordinate
