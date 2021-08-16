@@ -26,5 +26,6 @@ This app have a container too.
 5. request
 6. Bluprint
 7. jsonify
+8. geopy
 
 
