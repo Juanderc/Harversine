@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . /app
 
 #install the dependencies
-RUN pip install flask
+RUN pip install flask geopy
 
 
 #execute the program
